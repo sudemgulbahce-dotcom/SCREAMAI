@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@400;600;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-scream-bg: #000000;
+  --color-scream-accent: #E31E24;
+  --color-scream-ink: #FFFFFF;
+  --color-scream-muted: #262626;
+}
+
+body {
+  background-color: var(--color-scream-bg);
+  color: var(--color-scream-ink);
+  font-family: var(--font-sans);
+  /* Prevent bounce scroll on mobile */
+  overscroll-behavior-y: none;
+}
+
+.brutal-border {
+  border: 2px solid var(--color-scream-accent);
+}
+
+.logo-glitch {
+  text-shadow: 2px 0 #fff, -2px 0 #E31E24;
+}
+
+/* Mobile Safe Areas */
+.safe-pb {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-pt {
+  padding-top: env(safe-area-inset-top);
+}
+
+@media (max-width: 640px) {
+  .logo-glitch {
+    font-size: 1.5rem;
+  }
+}
+
+.brutal-shadow {
+  box-shadow: 4px 4px 0px var(--color-scream-accent);
+}
+
+.brutal-shadow-hover:hover {
+  box-shadow: 2px 2px 0px var(--color-scream-accent);
+  transform: translate(2px, 2px);
+}
+
+.markdown-body p {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-body ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}

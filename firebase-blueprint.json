@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Stores user profile information.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique identifier for the user." },
+        "email": { "type": "string", "format": "email", "description": "The user's email address." },
+        "displayName": { "type": "string", "description": "The user's display name." },
+        "photoURL": { "type": "string", "description": "The user's profile photo URL." },
+        "isAdmin": { "type": "boolean", "description": "Whether the user has admin privileges." }
+      },
+      "required": ["uid", "email"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "Stores a single chat message.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The ID of the user who owns this message." },
+        "role": { "type": "string", "enum": ["user", "model"], "description": "The role of the message sender." },
+        "content": { "type": "string", "description": "The text content of the message." },
+        "image": { "type": "string", "description": "Base64 encoded image data (optional)." },
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the message was sent." }
+      },
+      "required": ["userId", "role", "content", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile document."
+    },
+    "/users/{userId}/messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Chat history for a specific user."
+    }
+  }
+}
